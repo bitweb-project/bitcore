@@ -1,5 +1,6 @@
-export const SUPPORTED_CURRENCIES = ['BTE'];
-export const API_ROOT = 'http://127.0.0.1:3000/api';
+export const SUPPORTED_CURRENCIES = ['BTE','BTC', 'BCH', 'ETH', 'DOGE', 'LTC'];
+export const API_ROOT = 'https://api.bitcore.io/api';
+export const API_ROOT_BTE = 'https://api2.bitwebcore.net/api';
 export const API_ROOT_ETH = 'https://api-eth.bitcore.io/api';
 export const ETH_DEFAULT_REFRESH_INTERVAL = 300000;
 export const UTXO_DEFAULT_REFRESH_INTERVAL = 600000;

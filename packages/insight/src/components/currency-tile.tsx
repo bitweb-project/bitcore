@@ -122,13 +122,23 @@ const CurrencyTile = ({currency}: {currency: string}) => {
   const {data: priceDetails} = useApi(priceSource);
   const {data: priceDisplay} = useApi(chartSource);
 
-  if (priceDetails?.last_price_usd) {
-    price = priceDetails.last_price_usd.toFixed(6);
+
+  if (priceDetails) {
+    if (currency === 'BTE') {
+      price = priceDetails.last_price_usd?.toFixed(6);
+    } else {
+      price = priceDetails.data.rate?.toFixed(6);
+    }
   }
 
   let priceList: any[] = [];
-  if (priceDisplay) {
-    priceList = priceDisplay.map((item: any[]) => item[1]);
+
+  if (currency === 'BTE') {
+    if (priceDisplay) {
+      priceList = priceDisplay.map((item: any[]) => item[1]);
+    }
+  } else if (priceDisplay?.data) {
+    priceList = priceDisplay.data[0].priceDisplay;
   }
 
   if (error) {

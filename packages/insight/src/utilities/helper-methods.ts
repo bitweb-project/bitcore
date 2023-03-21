@@ -1,6 +1,7 @@
 import {
   API_ROOT,
   API_ROOT_ETH,
+  API_ROOT_BTE,
   COIN,
   DEFAULT_RBF_SEQ_NUMBER,
   ETH_DEFAULT_REFRESH_INTERVAL,
@@ -24,7 +25,9 @@ export const buildTime = (time: string): string => {
 };
 
 export const getApiRoot = (currency: string): string =>
-  ['ETH'].includes(currency) ? API_ROOT_ETH : API_ROOT;
+  currency === 'BTE' ? API_ROOT_BTE :
+  currency === 'ETH' ? API_ROOT_ETH :
+  API_ROOT;
 export const getDefaultRefreshInterval = (currency: string): number =>
   ['ETH'].includes(currency) ? ETH_DEFAULT_REFRESH_INTERVAL : UTXO_DEFAULT_REFRESH_INTERVAL;
 export const urlSafetyCheck = (url: string) => (url.includes('undefined') ? null : url);
