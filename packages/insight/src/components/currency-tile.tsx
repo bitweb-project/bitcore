@@ -112,7 +112,7 @@ const CurrencyTile = ({currency}: {currency: string}) => {
   let priceSource, chartSource;
   if (currency === 'BTE') {
     priceSource = 'https://explorer.bitwebcore.net/ext/getcurrentprice';
-    chartSource = 'https://www.ztb.im/api/v1/kline?symbol=BTE_USDT&type=30min&size=100';
+    chartSource = 'https://www.ztb.im/api/v1/kline?symbol=BTE_USDT&type=30min&size=1000';
   } else {
     priceSource = `https://bitpay.com/rates/${currency}/usd`;
     chartSource = `https://bitpay.com/currencies/prices?currencyPairs=["${currency}:USD"]`;
@@ -123,7 +123,7 @@ const CurrencyTile = ({currency}: {currency: string}) => {
   const {data: priceDisplay} = useApi(chartSource);
 
   if (priceDetails?.last_price_usd) {
-    price = priceDetails.last_price_usd;
+    price = priceDetails.last_price_usd.toFixed(6);
   }
 
   let priceList: any[] = [];
