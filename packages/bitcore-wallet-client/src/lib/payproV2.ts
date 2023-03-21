@@ -21,7 +21,8 @@ var MAX_FEE_PER_KB = {
   matic: 1000000000000, // 1000 Gwei
   xrp: 1000000000000,
   doge: 10000 * 1000, // 10k sat/b
-  ltc: 10000 * 1000 // 10k sat/b
+  ltc: 10000 * 1000, // 10k sat/b
+  bte: 10000 * 1000 // 10k sat/b
 };
 
 // PayPro Network Map

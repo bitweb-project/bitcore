@@ -70,7 +70,8 @@ export class BlockchainMonitor {
             matic: {},
             xrp: {},
             doge: {},
-            ltc: {}
+            ltc: {},
+            bte: {}
           };
 
           const chainNetworkPairs = [];

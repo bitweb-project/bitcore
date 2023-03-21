@@ -16,7 +16,8 @@ const Bitcore_ = {
   matic: Bitcore,
   xrp: Bitcore,
   doge: require('bitcore-lib-doge'),
-  ltc: require('bitcore-lib-ltc')
+  ltc: require('bitcore-lib-ltc'),
+  bte: require('bitcore-lib-bte')
 };
 const config = require('../../config');
 const Constants = Common.Constants,

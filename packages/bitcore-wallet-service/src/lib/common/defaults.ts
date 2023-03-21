@@ -150,6 +150,33 @@ module.exports = {
         nbBlocks: 24,
         defaultValue: 10000
       }
+    ],
+    bte: [
+      {
+        name: 'urgent',
+        nbBlocks: 2,
+        defaultValue: 150000
+      },
+      {
+        name: 'priority',
+        nbBlocks: 2,
+        defaultValue: 100000
+      },
+      {
+        name: 'normal',
+        nbBlocks: 3,
+        defaultValue: 100000
+      },
+      {
+        name: 'economy',
+        nbBlocks: 6,
+        defaultValue: 10000
+      },
+      {
+        name: 'superEconomy',
+        nbBlocks: 24,
+        defaultValue: 10000
+      }
     ]
   },
 
@@ -267,7 +294,8 @@ module.exports = {
     matic: 1000000000000, // 50 Gwei,
     xrp: 1000000000000,
     doge: 100000000 * 100,
-    ltc: 10000 * 1000 // 10k sat/b
+    ltc: 10000 * 1000, // 10k sat/b
+    bte: 10000 * 1000 // 10k sat/b
   },
 
   MIN_TX_FEE: {
@@ -277,7 +305,8 @@ module.exports = {
     matic: 0,
     xrp: 0,
     doge: 0,
-    ltc: 0
+    ltc: 0,
+    bte: 0
   },
 
   MAX_TX_FEE: {
@@ -287,7 +316,8 @@ module.exports = {
     matic: 1 * 1e18, // 1 matic
     xrp: 1 * 1e6, // 1 xrp
     doge: 400 * 1e8,
-    ltc: 0.05 * 1e8
+    ltc: 0.05 * 1e8,
+    bte: 0.05 * 1e8
   },
 
   // ETH

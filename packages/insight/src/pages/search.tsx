@@ -91,7 +91,11 @@ const Search: React.FC = () => {
                         <SearchTileHeader>
                           <HeaderImg>
                             <img
-                              src={`https://bitpay.com/img/icon/currencies/${chain}.svg`}
+                              src={
+                                chain === 'BTE'
+                                  ? 'https://bitwebcore.net/img/logo-white.svg' // Replace with the actual URL for BTE
+                                  : `https://bitpay.com/img/icon/currencies/${chain}.svg`
+                              }
                               width={35}
                               height={35}
                               alt='currency logo'
@@ -131,7 +135,11 @@ const Search: React.FC = () => {
                         <SearchTileHeader>
                           <HeaderImg>
                             <img
-                              src={`https://bitpay.com/img/icon/currencies/${chain}.svg`}
+                              src={
+                                chain === 'BTE'
+                                  ? 'https://bitwebcore.net/img/logo-white.svg' // Replace with the actual URL for BTE
+                                  : `https://bitpay.com/img/icon/currencies/${chain}.svg`
+                              }
                               width={35}
                               height={35}
                               alt='currency logo'
@@ -169,7 +177,11 @@ const Search: React.FC = () => {
                       <SearchTileHeader>
                         <HeaderImg>
                           <img
-                            src={`https://bitpay.com/img/icon/currencies/${chain}.svg`}
+                            src={
+                              chain === 'BTE'
+                                ? 'https://bitwebcore.net/img/logo-white.svg' // Replace with the actual URL for BTE
+                                : `https://bitpay.com/img/icon/currencies/${chain}.svg`
+                            }
                             width={35}
                             height={35}
                             alt='currency logo'

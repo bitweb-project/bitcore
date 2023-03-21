@@ -10,6 +10,7 @@ The modules in this table will automatically register with `bitcore-node` if you
 | ETH            | ethereum       | ./ethereum     |
 | BCH            | bitcoin-cash   | ./bitcoin-cash |
 | LTC            | litecoin       | ./litecoin     |
+| BTE            | bitweb         | ./bitweb       |
 | DOGE           | dogecoin       | ./dogecoin     |
 | XRP            | ripple         | ./ripple       |
 

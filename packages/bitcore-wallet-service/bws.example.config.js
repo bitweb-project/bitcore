@@ -81,6 +81,14 @@ module.exports = {
         url: 'https://api.bitcore.io'
       }
     },
+    bte: {
+      livenet: {
+        url: 'https://api.bitcore.io'
+      },
+      testnet: {
+        url: 'https://api.bitcore.io'
+      }
+    },
     socketApiKey: 'socketApiKey'
   },
   pushNotificationsOpts: {
@@ -175,6 +183,10 @@ module.exports = {
   //   ltc: {
   //     livenet: 'https://bitpay.com/insight/#/LTC/mainnet/tx/{{txid}}',
   //     testnet: 'https://bitpay.com/insight/#/LTC/testnet/tx/{{txid}}',
+  //  },
+  //   bte: {
+  //     livenet: 'https://bitpay.com/insight/#/BTE/mainnet/tx/{{txid}}',
+  //     testnet: 'https://bitpay.com/insight/#/BTE/testnet/tx/{{txid}}',
   //  }
   // },
   // },

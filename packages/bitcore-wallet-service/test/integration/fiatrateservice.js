@@ -259,7 +259,7 @@ describe('Fiat rate service', function() {
     });
 
     it('should get historical rates from ts to now', function(done) {
-      const coins = ['btc', 'bch', 'eth', 'matic', 'xrp', 'doge', 'ltc'];
+      const coins = ['btc', 'bch', 'eth', 'matic', 'xrp', 'doge', 'ltc', 'bte'];
       var clock = sinon.useFakeTimers({ toFake: ['Date'] });
       async.each(
         [1.0, 2.0, 3.0, 4.0, 5.0],
@@ -363,6 +363,7 @@ describe('Fiat rate service', function() {
               should.not.exist(res['xrp']);
               should.not.exist(res['doge']);
               should.not.exist(res['ltc']);
+              should.not.exist(res['bte']);
 
               res['btc'][3].ts.should.equal(100);
               res['btc'][3].rate.should.equal(1.0);
@@ -384,7 +385,7 @@ describe('Fiat rate service', function() {
     });
 
     it('should return current rates if missing opts.ts when fetching historical rates', function(done) {
-      const coins = ['btc', 'bch', 'eth', 'xrp', 'doge', 'ltc'];
+      const coins = ['btc', 'bch', 'eth', 'xrp', 'doge', 'ltc', 'bte'];
       var clock = sinon.useFakeTimers({ toFake: ['Date'] });
       async.each(
         [1.0, 2.0, 3.0, 4.0],
@@ -548,6 +549,16 @@ describe('Fiat rate service', function() {
           rate: 170
         }
       ];
+      var bte = [
+        {
+          code: 'USD',
+          rate: 150
+        },
+        {
+          code: 'EUR',
+          rate: 170
+        }
+      ];
       var shib = [
         {
           code: 'USD',
@@ -611,6 +622,12 @@ describe('Fiat rate service', function() {
           json: true
         })
         .yields(null, null, ltc);
+      request.get
+        .withArgs({
+          url: 'https://bitpay.com/api/rates/BTE',
+          json: true
+        })
+        .yields(null, null, bte);
       request.get
         .withArgs({
           url: 'https://bitpay.com/api/rates/SHIB',
@@ -693,44 +710,55 @@ describe('Fiat rate service', function() {
                                   function(err, res) {
                                     should.not.exist(err);
                                     res.fetchedOn.should.equal(100);
-                                    res.rate.should.equal(150);
+                                    res.rate.should.equal(0.003);
                                     service.getRate(
                                       {
-                                        code: 'EUR'
+                                        code: 'USD',
+                                        coin: 'bte'
                                       },
                                       function(err, res) {
                                         should.not.exist(err);
                                         res.fetchedOn.should.equal(100);
-                                        res.rate.should.equal(234.56);
+                                        res.rate.should.equal(150);
                                         service.getRate(
                                           {
-                                            code: 'USD',
-                                            coin: 'shib'
+                                            code: 'EUR'
                                           },
                                           function(err, res) {
                                             should.not.exist(err);
                                             res.fetchedOn.should.equal(100);
-                                            res.rate.should.equal(0.00003678);
+                                            res.rate.should.equal(234.56);
                                             service.getRate(
                                               {
                                                 code: 'USD',
-                                                coin: 'ape'
+                                                coin: 'shib'
                                               },
                                               function(err, res) {
                                                 should.not.exist(err);
                                                 res.fetchedOn.should.equal(100);
-                                                res.rate.should.equal(6.66);
+                                                res.rate.should.equal(0.00003678);
                                                 service.getRate(
                                                   {
                                                     code: 'USD',
-                                                    coin: 'usdc'
+                                                    coin: 'ape'
                                                   },
                                                   function(err, res) {
                                                     should.not.exist(err);
                                                     res.fetchedOn.should.equal(100);
-                                                    res.rate.should.equal(1);
-                                                    clock.restore();
-                                                    done();
+                                                    res.rate.should.equal(6.66);
+                                                    service.getRate(
+                                                      {
+                                                        code: 'USD',
+                                                        coin: 'usdc'
+                                                      },
+                                                      function(err, res) {
+                                                        should.not.exist(err);
+                                                        res.fetchedOn.should.equal(100);
+                                                        res.rate.should.equal(1);
+                                                        clock.restore();
+                                                        done();
+                                                      }
+                                                    );
                                                   }
                                                 );
                                               }

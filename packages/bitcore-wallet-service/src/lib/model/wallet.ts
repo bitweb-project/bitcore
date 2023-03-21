@@ -19,7 +19,8 @@ const Bitcore = {
   matic: require('bitcore-lib'),
   xrp: require('bitcore-lib'),
   doge: require('bitcore-lib-doge'),
-  ltc: require('bitcore-lib-ltc')
+  ltc: require('bitcore-lib-ltc'),
+  bte: require('bitcore-lib-bte')
 };
 
 export interface IWallet {

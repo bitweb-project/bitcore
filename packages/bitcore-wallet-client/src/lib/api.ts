@@ -25,7 +25,8 @@ var Bitcore_ = {
   matic: CWC.BitcoreLib,
   xrp: CWC.BitcoreLib,
   doge: CWC.BitcoreLibDoge,
-  ltc: CWC.BitcoreLibLtc
+  ltc: CWC.BitcoreLibLtc,
+  bte: CWC.BitcoreLibBte
 };
 var Mnemonic = require('bitcore-mnemonic');
 var url = require('url');
@@ -73,6 +74,7 @@ export class API extends EventEmitter {
   static BitcoreCash = CWC.BitcoreLibCash;
   static BitcoreDoge = CWC.BitcoreLibDoge;
   static BitcoreLtc = CWC.BitcoreLibLtc;
+  static BitcoreBte = CWC.BitcoreLibBte;
 
   constructor(opts?) {
     super();
@@ -2121,7 +2123,7 @@ export class API extends EventEmitter {
           const weightedSize = [];
 
           let isSegwit =
-            (txp.coin == 'btc' || txp.coin == 'ltc') &&
+            (txp.coin == 'btc' || txp.coin == 'ltc' || txp.coin == 'bte') &&
             (txp.addressType == 'P2WSH' || txp.addressType == 'P2WPKH');
 
           let i = 0;
@@ -2908,10 +2910,12 @@ export class API extends EventEmitter {
         ['xrp', 'livenet'],
         ['doge', 'livenet'],
         ['ltc', 'livenet'],
+        ['bte', 'livenet'],
         ['btc', 'livenet', true],
         ['bch', 'livenet', true],
         ['doge', 'livenet', true],
-        ['ltc', 'livenet', true]
+        ['ltc', 'livenet', true],
+        ['bte', 'livenet', true]
       ];
       if (key.use44forMultisig) {
         //  testing old multi sig

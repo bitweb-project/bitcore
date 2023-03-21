@@ -3,6 +3,7 @@ import { BtcValidation } from './btc';
 import { DogeValidation } from './doge';
 import { EthValidation } from './eth';
 import { LtcValidation } from './ltc';
+import { BteValidation } from './bte';
 import { MaticValidation } from './matic';
 import { XrpValidation } from './xrp';
 
@@ -18,6 +19,7 @@ const validation: { [chain: string]: IValidation } = {
   XRP: new XrpValidation(),
   DOGE: new DogeValidation(),
   LTC: new LtcValidation(),
+  BTE: new BteValidation(),
   MATIC: new MaticValidation()
 };
 

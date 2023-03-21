@@ -22,7 +22,8 @@ const Bitcore_ = {
   eth: Bitcore,
   xrp: Bitcore,
   doge: require('bitcore-lib-doge'),
-  ltc: require('bitcore-lib-ltc')
+  ltc: require('bitcore-lib-ltc'),
+  bte: require('bitcore-lib-bte')
 };
 
 const { WalletService } = require('../../ts_build/lib/server');
@@ -48,7 +49,8 @@ const TO_SAT = {
   'usdc': 1e6,
   'xrp': 1e6,
   'doge': 1e8,
-  'ltc': 1e8
+  'ltc': 1e8,
+  'bte': 1e8
 };
 
 const TOKENS = ['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', '0x056fd409e1d7a124bd7017459dfea2f387b6d5cd'];
@@ -3826,6 +3828,13 @@ describe('Wallet service', function() {
       addr: 'LUDZDsJHVwgZBc5HdfbbBgqU6hJZwWNseV',
       lockedFunds: 0,
       flags: {},
+    },
+    {
+      coin: 'bte',
+      key: 'id44btc',
+      addr: 'LUDZDsJHVwgZBc5HdfbbBgqU6hJZwWNseV',
+      lockedFunds: 0,
+      flags: {},
     }
   ];
 
@@ -3876,7 +3885,8 @@ describe('Wallet service', function() {
               eth:8000,
               xrp:8000,
               doge:1e8,
-              ltc:8000
+              ltc:8000,
+              bte:8000
             }
             let amount = coinAmount[coin];
             var txOpts = {
@@ -3964,7 +3974,7 @@ describe('Wallet service', function() {
               });
             });
           });
-          if(coin === 'btc' || coin === 'bch' || coin === 'doge' || coin === 'ltc') {
+          if(coin === 'btc' || coin === 'bch' || coin === 'doge' || coin === 'ltc' || coin === 'bte') {
             it('should fail to create BTC/BCH tx for invalid amount', function(done) {
               var txOpts = {
                 outputs: [{
@@ -4401,7 +4411,8 @@ describe('Wallet service', function() {
                 eth:0.8,
                 xrp:0.8,
                 doge:1,
-                ltc: 0.8
+                ltc: 0.8,
+                bte: 0.8
               }
               var txp1, txp2;
               var txOpts = {
@@ -4768,6 +4779,11 @@ describe('Wallet service', function() {
                 expected = 200e2;
                 expectedNormal = 200e2;
                 break;
+              case 'bte':
+                level = 'normal';
+                expected = 200e2;
+                expectedNormal = 200e2;
+                break;
               default:
                 level = 'economy';
                 expected = 180e2;
@@ -4842,7 +4858,8 @@ describe('Wallet service', function() {
             eth:8000,
             xrp:8000,
             doge:1e8,
-            ltc: 8000
+            ltc: 8000,
+            bte: 8000
           }
           let amount = coinAmount[coin];
           helpers.stubUtxos(server, wallet, [1, 2], function() {
@@ -4880,7 +4897,8 @@ describe('Wallet service', function() {
             xrp: 3800,
             eth: 210000000,
             doge: 1e8,
-            ltc: 3800
+            ltc: 3800,
+            bte: 3800
           }
           helpers.stubUtxos(server, wallet, [1, 2], { coin }, function() {
             var max = 3 * ts - coinFee[coin]; // Fees for this tx at 100bits/kB = 3740 sat
@@ -4931,7 +4949,8 @@ describe('Wallet service', function() {
             eth:0.5,
             xrp:0.5,
             doge:1,
-            ltc:0.5
+            ltc:0.5,
+            bte:0.5
           }
           helpers.stubUtxos(server, wallet, 2, { coin }, function() {
             sandbox.stub(CWC.Transactions, 'create').throws(new Error('dummy exception'));
@@ -4939,6 +4958,7 @@ describe('Wallet service', function() {
             sandbox.stub(Bitcore_.bch, 'Transaction').throws(new Error('dummy exception'));
             sandbox.stub(Bitcore_.doge, 'Transaction').throws(new Error('dummy exception'));
             sandbox.stub(Bitcore_.ltc, 'Transaction').throws(new Error('dummy exception'));
+            sandbox.stub(Bitcore_.bte, 'Transaction').throws(new Error('dummy exception'));
             var txOpts = {
               outputs: [{
                 toAddress: addressStr,

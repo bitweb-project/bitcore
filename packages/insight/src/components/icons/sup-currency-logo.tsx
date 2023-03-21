@@ -8,7 +8,13 @@ const CurrencyIcon = styled(motion.sup)`
 
 const SupCurrencyLogo = ({currency}: {currency: string}) => {
   const animationControls = useAnimation();
-  const imgSrc = `https://bitpay.com/img/icon/currencies/${currency}.svg`;
+  let imgSrc: string;
+
+  if (currency === 'BTE') {
+    imgSrc = 'https://bitwebcore.net/img/logo-white.svg'; // Replace with the actual URL for the BTE logo
+  } else {
+    imgSrc = `https://bitpay.com/img/icon/currencies/${currency}.svg`;
+  }
 
   return (
     <CurrencyIcon variants={imageFadeIn} initial='initial' animate={animationControls}>

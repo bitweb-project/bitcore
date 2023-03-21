@@ -39,9 +39,25 @@ const inputTypes: InputType[] = [
     chainNetworks: [{chain: 'LTC', network: 'mainnet'}],
   },
 
+  // Standard BTE
+  {
+    regexes: [/^(bitweb:)?([ED][a-km-zA-HJ-NP-Z1-9]{25,35})/],
+    dataIndex: 2,
+    type: 'address',
+    chainNetworks: [{chain: 'BTE', network: 'mainnet'}],
+  },
+
+  // bech32 BTE Address
+  {
+    regexes: [/^(bitweb:)?(web1[ac-hj-np-zAC-HJ-NP-Z02-9]{11,73})/],
+    dataIndex: 2,
+    type: 'address',
+    chainNetworks: [{chain: 'BTE', network: 'mainnet'}],
+  },
+
   // Testnet BTC / BCH / Doge / LTC Address
   {
-    regexes: [/^(bitcoin:|bchtest:|dogecoin:|litecoin:)?([2mn][1-9A-HJ-NP-Za-km-z]{26,35})/],
+    regexes: [/^(bitcoin:|bchtest:|dogecoin:|litecoin:|bitweb:)?([2mn][1-9A-HJ-NP-Za-km-z]{26,35})/],
     dataIndex: 2,
     type: 'address',
     chainNetworks: [
@@ -49,6 +65,7 @@ const inputTypes: InputType[] = [
       {chain: 'BCH', network: 'testnet'},
       {chain: 'DOGE', network: 'testnet'},
       {chain: 'LTC', network: 'testnet'},
+      {chain: 'BTE', network: 'testnet'},
     ],
   },
   // Testnet BCH Address
@@ -83,10 +100,12 @@ const inputTypes: InputType[] = [
       {chain: 'BCH', network: 'mainnet'},
       {chain: 'DOGE', network: 'mainnet'},
       {chain: 'LTC', network: 'mainnet'},
+      {chain: 'BTE', network: 'mainnet'},
       {chain: 'BTC', network: 'testnet'},
       {chain: 'BCH', network: 'testnet'},
       {chain: 'DOGE', network: 'testnet'},
       {chain: 'LTC', network: 'testnet'},
+      {chain: 'BTE', network: 'testnet'},
     ],
   },
   // ETH block or tx
@@ -108,11 +127,13 @@ const inputTypes: InputType[] = [
       {chain: 'DOGE', network: 'mainnet'},
       {chain: 'ETH', network: 'mainnet'},
       {chain: 'LTC', network: 'mainnet'},
+      {chain: 'BTE', network: 'mainnet'},
       {chain: 'BTC', network: 'testnet'},
       {chain: 'BCH', network: 'testnet'},
       {chain: 'DOGE', network: 'testnet'},
       {chain: 'ETH', network: 'testnet'},
       {chain: 'LTC', network: 'testnet'},
+      {chain: 'BTE', network: 'testnet'},
     ],
   },
 ];

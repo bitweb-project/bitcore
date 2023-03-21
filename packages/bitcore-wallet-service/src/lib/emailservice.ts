@@ -256,6 +256,7 @@ export class EmailService {
       xrp: 'XRP',
       doge: 'DOGE',
       ltc: 'LTC',
+      bte: 'BTE',
       usdc: 'USDC',
       usdp: 'USDP',
       gusd: 'GUSD',

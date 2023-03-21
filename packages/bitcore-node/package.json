@@ -94,6 +94,7 @@
     "bitcore-lib-cash": "^10.0.0",
     "bitcore-lib-doge": "^10.0.0",
     "bitcore-lib-ltc": "^10.0.0",
+    "bitcore-lib-bte": "^10.0.0",
     "bitcore-p2p": "^10.0.0",
     "bitcore-p2p-cash": "^10.0.0",
     "bitcore-p2p-doge": "^10.0.0",

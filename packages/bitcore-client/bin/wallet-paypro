@@ -9,7 +9,8 @@ const libs = {
   BTC: cwc.BitcoreLib,
   BCH: cwc.BitcoreLibCash,
   DOGE: cwc.BitcoreLibDoge,
-  LTC: cwc.BitcoreLibLtc
+  LTC: cwc.BitcoreLibLtc,
+  BTE: cwc.BitcoreLibBte
 };
 
 program
@@ -63,7 +64,7 @@ const main = async () => {
   const from = inputFrom || await wallet.deriveAddress(0);
   let nonce;
   const { chain } = wallet;
-  if (!['BTC', 'BCH', 'DOGE', 'LTC'].includes(chain)) {
+  if (!['BTC', 'BCH', 'DOGE', 'LTC', 'BTE'].includes(chain)) {
     nonce = inputNonce || await wallet.getNonce();
   }
   const currency = token || chain;
@@ -116,7 +117,7 @@ const main = async () => {
     console.log(`txid: ${txid}`);
 
     let weightedSize;
-    if (['BTC', 'BCH', 'DOGE', 'LTC'].includes(chain)) {
+    if (['BTC', 'BCH', 'DOGE', 'LTC', 'BTE'].includes(chain)) {
       const transaction = new libs[chain].Transaction(signedTx);
       weightedSize = transaction._estimateSize();
     }

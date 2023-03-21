@@ -9,7 +9,8 @@ module.exports = {
     MATIC: 'matic',
     XRP: 'xrp',
     DOGE: 'doge',
-    LTC: 'ltc'
+    LTC: 'ltc',
+    BTE: 'bte'
   },
 
   BITPAY_SUPPORTED_COINS: {
@@ -21,6 +22,7 @@ module.exports = {
     XRP: 'xrp',
     DOGE: 'doge',
     LTC: 'ltc',
+    BTE: 'bte',
     SHIB: 'shib',
     APE: 'ape',
     USDC: 'usdc',
@@ -70,7 +72,8 @@ module.exports = {
     BTC: 'btc',
     BCH: 'bch',
     DOGE: 'doge',
-    LTC: 'ltc'
+    LTC: 'ltc',
+    BTE: 'bte'
   },
 
   EVM_CHAINS: {
@@ -127,6 +130,7 @@ module.exports = {
     matic: { testnet: 300, livenet: 12 }, // MATIC set to 12 because blocks normally occur every 1-2 seconds
     xrp: { testnet: 300, livenet: 0 },
     doge: { testnet: 300, livenet: 0 },
-    ltc: { testnet: 300, livenet: 0 }
+    ltc: { testnet: 300, livenet: 0 },
+    bte: { testnet: 300, livenet: 0 }
   } as { [chain: string]: { [network: string]: number } }
 };

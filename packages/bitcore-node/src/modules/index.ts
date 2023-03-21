@@ -54,6 +54,7 @@ class ModuleManager extends BaseModule {
     BCH: './bitcoin-cash',
     DOGE: './dogecoin',
     LTC: './litecoin',
+    BTE: './bitweb',
     XRP: './ripple'
   };
 

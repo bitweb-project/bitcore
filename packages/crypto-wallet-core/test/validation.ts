@@ -19,6 +19,10 @@ describe('Address Validation', () => {
   const ltcAddress = 'LYgDcZ3oW3aZBhZUyiC84fb99hyUPVxLwB';
   const ltcTestAddress = 'QhpBFbYvLG2bgCZ3D1ztGEUVqmcgY5vjVF';
 
+  // BTE
+  const bteAddress = 'LYgDcZ3oW3aZBhZUyiC84fb99hyUPVxLwB';
+  const bteTestAddress = 'QhpBFbYvLG2bgCZ3D1ztGEUVqmcgY5vjVF';
+
   // ETH
   const ethAddress = '37d7B3bBD88EFdE6a93cF74D2F5b0385D3E3B08A';
   const prefixEthAddress = '0x37d7B3bBD88EFdE6a93cF74D2F5b0385D3E3B08A';
@@ -35,6 +39,7 @@ describe('Address Validation', () => {
   const bchUri = 'bitcoincash:pp8skudq3x5hzw8ew7vzsw8tn4k8wxsqsv0lt0mf3g';
   const dogeUri = 'dogecoin:DQnSpKaUdXYZz8Q4WUBCdaGBSthiAJbWBr';
   const ltcUri = 'litecoin:LYgDcZ3oW3aZBhZUyiC84fb99hyUPVxLwB';
+  const bteUri = 'bitweb:LYgDcZ3oW3aZBhZUyiC84fb99hyUPVxLwB';
   const ethUri = 'ethereum:0x37d7B3bBD88EFdE6a93cF74D2F5b0385D3E3B08A';
   const ethUriParams = 'ethereum:0x37d7B3bBD88EFdE6a93cF74D2F5b0385D3E3B08A?value=123&gasPrice=123&gas=123&gasLimit=123';
   const ethUriSingleParam = 'ethereum:0x37d7B3bBD88EFdE6a93cF74D2F5b0385D3E3B08A?value=123';
@@ -42,6 +47,7 @@ describe('Address Validation', () => {
   const bchTestUri = 'bchtest:qq083kgf3wjg7ya8nun36e8nf24g9xgvachahfnyle';
   const dogeTestUri = 'dogecoin:mpz836YMHb7Ubjx4G2YnutwQRd1yz5ssNv';
   const ltcTestUri = 'litecoin:QhpBFbYvLG2bgCZ3D1ztGEUVqmcgY5vjVF';
+  const bteTestUri = 'bitweb:QhpBFbYvLG2bgCZ3D1ztGEUVqmcgY5vjVF';
   const xrpUri = 'ripple:rEqj9WKSH7wEkPvWf6b4gCi26Y3F7HbKUF';
   const xrpUriParams = 'ripple:rEqj9WKSH7wEkPvWf6b4gCi26Y3F7HbKUF?amount=123456&dt=123456';
   const xrpUriSingleParam = 'ripple:rEqj9WKSH7wEkPvWf6b4gCi26Y3F7HbKUF?amount=123456';
@@ -54,6 +60,7 @@ describe('Address Validation', () => {
   const invalidBchAddress = 'r8uujscckc56ancdkmqnyyl2rx6pnp24gmdfrf8qd';
   const invalidDogeAddress = 'DQnSpKaUdXYZz8Q4WUBCdaGBSthiAJbWB';
   const invalidLtcAddress = 'LYgDcZ3oW3aZBhZUyiC84fb99hyUPVxLw';
+  const invalidBteAddress = 'LYgDcZ3oW3aZBhZUyiC84fb99hyUPVxLw';
   const invalidEthAddress = '37d7B3bBD88EFdE6a93cF74D2F5b0385D3E3B08';
   const invalidXrpAddress = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTH';
   const invalidMaticAddress = '57d7B3bBD88EFdE6a93cF74D2F5b0385D3E3B08';
@@ -90,6 +97,13 @@ describe('Address Validation', () => {
   it('should be able to validate an LTC address', async () => {
     const isValidAddress = await Validation.validateAddress('LTC', 'mainnet', ltcAddress);
     const isValidTestAddress = await Validation.validateAddress('LTC', 'testnet', ltcTestAddress);
+    expect(isValidAddress).to.equal(true);
+    expect(isValidTestAddress).to.equal(true);
+  });
+
+  it('should be able to validate an BTE address', async () => {
+    const isValidAddress = await Validation.validateAddress('BTE', 'mainnet', bteAddress);
+    const isValidTestAddress = await Validation.validateAddress('BTE', 'testnet', bteTestAddress);
     expect(isValidAddress).to.equal(true);
     expect(isValidTestAddress).to.equal(true);
   });
@@ -141,6 +155,13 @@ describe('Address Validation', () => {
     expect(isValidTestUri).to.equal(true);
   });
 
+  it('should be able to validate an BTE Uri', async () => {
+    const isValidUri = await Validation.validateUri('BTE', bteUri);
+    const isValidTestUri = await Validation.validateUri('BTE', bteTestUri);
+    expect(isValidUri).to.equal(true);
+    expect(isValidTestUri).to.equal(true);
+  });
+
   it('should be able to validate an ETH Uri', async () => {
     const isValidUri = await Validation.validateUri('ETH', ethUri);
     const isValidUriParams = await Validation.validateUri('ETH', ethUriParams);
@@ -185,6 +206,11 @@ describe('Address Validation', () => {
 
   it('should be able to invalidate an incorrect LTC address', async () => {
     const inValidAddress = await Validation.validateAddress('LTC', 'mainnet', invalidLtcAddress);
+    expect(inValidAddress).to.equal(false);
+  });
+  
+  it('should be able to invalidate an incorrect BTE address', async () => {
+    const inValidAddress = await Validation.validateAddress('BTE', 'mainnet', invalidBteAddress);
     expect(inValidAddress).to.equal(false);
   });
 

@@ -5,6 +5,7 @@ import { BtcChain } from './btc';
 import { DogeChain } from './doge';
 import { EthChain } from './eth';
 import { LtcChain } from './ltc';
+import { BteChain } from './bte';
 import { MaticChain } from './matic';
 import { XrpChain } from './xrp';
 
@@ -75,7 +76,8 @@ const chains: { [chain: string]: IChain } = {
   MATIC: new MaticChain(),
   XRP: new XrpChain(),
   DOGE: new DogeChain(),
-  LTC: new LtcChain()
+  LTC: new LtcChain(),
+  BTE: new BteChain()
 };
 
 class ChainProxy {

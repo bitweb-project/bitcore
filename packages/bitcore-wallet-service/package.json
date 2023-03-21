@@ -47,6 +47,7 @@
     "bitcore-lib-cash": "^10.0.0",
     "bitcore-lib-doge": "^10.0.0",
     "bitcore-lib-ltc": "^10.0.0",
+    "bitcore-lib-bte": "^10.0.0",
     "body-parser": "1.19.0",
     "compression": "1.7.4",
     "crypto-wallet-core": "^10.0.0",

@@ -46,7 +46,8 @@ export class Address {
     btc: require('bitcore-lib'),
     bch: require('bitcore-lib-cash'),
     doge: require('bitcore-lib-doge'),
-    ltc: require('bitcore-lib-ltc')
+    ltc: require('bitcore-lib-ltc'),
+    bte: require('bitcore-lib-bte')
   };
 
   static create(opts) {

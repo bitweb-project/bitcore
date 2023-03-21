@@ -5,6 +5,7 @@ import { ERC20TxProvider } from './erc20';
 import { ETHTxProvider } from './eth';
 import { ETHMULTISIGTxProvider } from './eth-multisig';
 import { LTCTxProvider } from './ltc';
+import { BTETxProvider } from './bte';
 import { MATICTxProvider } from './matic';
 import { MATICERC20TxProvider } from './matic-erc20';
 import { MATICMULTISIGTxProvider } from './matic-multisig';
@@ -19,6 +20,7 @@ const providers = {
   XRP: new XRPTxProvider(),
   DOGE: new DOGETxProvider(),
   LTC: new LTCTxProvider(),
+  BTE: new BTETxProvider(),
   MATIC: new MATICTxProvider(),
   MATICMULTISIG: new MATICMULTISIGTxProvider(),
   MATICERC20: new MATICERC20TxProvider()

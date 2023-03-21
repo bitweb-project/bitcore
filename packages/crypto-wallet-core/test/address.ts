@@ -49,6 +49,18 @@ describe('Address Derivation', () => {
     const expectedAddress = 'LYgDcZ3oW3aZBhZUyiC84fb99hyUPVxLwB';
     expect(address).to.equal(expectedAddress);
   });
+  
+  it('should be able to generate a valid BTE address', () => {
+    const xPub = 'tpubDCetVaW8PG7S6SuLjRGmmyVA4QtXyXTUsqXySaC4WV44igJ3aJNQgYedjL1FX12a1tDctnh3kRPybKTMUjdi9mzUm4wJF3GNSjf8GwDUHpp';
+    // 'select scout crash enforce riot rival spring whale hollow radar rule sentence';
+
+    const path = Deriver.pathFor('BTE', 'mainnet');
+    expect(path).to.equal("m/44'/2'/0'");
+
+    const address = Deriver.deriveAddress('BTE', 'mainnet', xPub, 0, false);
+    const expectedAddress = 'LYgDcZ3oW3aZBhZUyiC84fb99hyUPVxLwB';
+    expect(address).to.equal(expectedAddress);
+  });
 
   it('should be able to generate a valid ETH address', () => {
     const xPub = 'xpub6D8rChqkgFuaZULuq2n6VrS4zB5Cmv24gcRc889dFRRgYAH1CGQmQZ9kcPfMAfWGPnyMd1X5foBYFmJ5ZPfvwhm6tXjaY13ao1rQHRtkKDv';

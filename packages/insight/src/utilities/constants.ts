@@ -1,5 +1,5 @@
-export const SUPPORTED_CURRENCIES = ['BTC', 'BCH', 'ETH', 'DOGE', 'LTC'];
-export const API_ROOT = 'https://api.bitcore.io/api';
+export const SUPPORTED_CURRENCIES = ['BTE'];
+export const API_ROOT = 'http://127.0.0.1:3000/api';
 export const API_ROOT_ETH = 'https://api-eth.bitcore.io/api';
 export const ETH_DEFAULT_REFRESH_INTERVAL = 300000;
 export const UTXO_DEFAULT_REFRESH_INTERVAL = 600000;
@@ -11,6 +11,7 @@ export const colorCodes: any = {
   BCH: '#2FCF6E',
   ETH: '#6B71D6',
   LTC: '#868686',
+  BTE: '#868685',
   DOGE: '#B29832',
 };
 

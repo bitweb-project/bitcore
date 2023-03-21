@@ -405,6 +405,8 @@ export class Key {
       coinCode = '3';
     } else if (opts.coin == 'ltc') {
       coinCode = '2';
+    } else if (opts.coin == 'bte') {
+      coinCode = '0';
     } else {
       throw new Error('unknown coin: ' + opts.coin);
     }

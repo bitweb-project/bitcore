@@ -16,6 +16,7 @@ const LightBackground: {[key in string]: string} = {
   BCH: '#EFFFF6',
   ETH: '#EBECF6',
   LTC: '#FAFAFA',
+  BTE: '#FAFAF5',
   DOGE: '#FDF8E6',
 };
 
@@ -24,6 +25,7 @@ const DarkBackground: {[key in string]: string} = {
   BCH: '#020A05',
   ETH: '#06070F',
   LTC: '#0A0A0A',
+  BTE: '#0A0A05',
   DOGE: '#0B0903',
 };
 
@@ -106,22 +108,27 @@ const CurrencyTile = ({currency}: {currency: string}) => {
   let price;
 
   const url = `${apiRoot}/${currency}/mainnet/block?limit=1`;
-  const {data, error} = useApi(url, {refreshInterval});
-  const {data: priceDetails} = useApi(`https://bitpay.com/rates/${currency}/usd`);
-  const {data: priceDisplay} = useApi(
-    `https://bitpay.com/currencies/prices?currencyPairs=["${currency}:USD"]`,
-  );
+  
+  let priceSource, chartSource;
+  if (currency === 'BTE') {
+    priceSource = 'https://explorer.bitwebcore.net/ext/getcurrentprice';
+    chartSource = 'https://www.ztb.im/api/v1/kline?symbol=BTE_USDT&type=30min&size=100';
+  } else {
+    priceSource = `https://bitpay.com/rates/${currency}/usd`;
+    chartSource = `https://bitpay.com/currencies/prices?currencyPairs=["${currency}:USD"]`;
+  }
 
-  if (priceDetails?.data) {
-    const {
-      data: {rate},
-    } = priceDetails;
-    price = rate;
+  const {data, error} = useApi(url, {refreshInterval});
+  const {data: priceDetails} = useApi(priceSource);
+  const {data: priceDisplay} = useApi(chartSource);
+
+  if (priceDetails?.last_price_usd) {
+    price = priceDetails.last_price_usd;
   }
 
   let priceList: any[] = [];
-  if (priceDisplay?.data) {
-    priceList = priceDisplay.data[0].priceDisplay;
+  if (priceDisplay) {
+    priceList = priceDisplay.map((item: any[]) => item[1]);
   }
 
   if (error) {
@@ -146,7 +153,9 @@ const CurrencyTile = ({currency}: {currency: string}) => {
   const gotoAllBlocks = async () => {
     await navigate(`/${currency}/mainnet/blocks`);
   };
-  const imgSrc = `https://bitpay.com/img/icon/currencies/${currency}.svg`;
+  const imgSrc = currency === 'BTE'
+    ? 'https://bitwebcore.net/img/logo-white.svg' // Replace with the actual URL for BTE
+    : `https://bitpay.com/img/icon/currencies/${currency}.svg`;
 
   const chartData = {
     labels: priceList,

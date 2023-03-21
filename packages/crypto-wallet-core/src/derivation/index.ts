@@ -3,6 +3,7 @@ import { BtcDeriver } from './btc';
 import { DogeDeriver } from './doge';
 import { EthDeriver } from './eth';
 import { LtcDeriver } from './ltc';
+import { BteDeriver } from './bte';
 import { MaticDeriver } from './matic';
 import { Paths } from './paths';
 import { XrpDeriver } from './xrp';
@@ -26,6 +27,7 @@ const derivers: { [chain: string]: IDeriver } = {
   XRP: new XrpDeriver(),
   DOGE: new DogeDeriver(),
   LTC: new LtcDeriver(),
+  BTE: new BteDeriver(),
   MATIC: new MaticDeriver()
 };
 
